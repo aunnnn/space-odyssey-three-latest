@@ -1,0 +1,28 @@
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"}}
+</script>
+<pre id="out">starting...</pre>
+<script type="module">
+const out = document.getElementById('out');
+function log(m){ out.textContent += '\n' + m; }
+try {
+  log('importing three...');
+  const THREE = await import('three');
+  log('three OK, rev=' + THREE.REVISION);
+  log('importing GLTFLoader...');
+  const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
+  log('GLTFLoader OK: ' + (typeof GLTFLoader));
+  log('importing config...');
+  const { SpaceVoyageAssets } = await import('./assets/js/config.js');
+  log('config OK: ' + Object.keys(SpaceVoyageAssets.models).join(','));
+  log('importing performance...');
+  const { SpaceVoyagePerf } = await import('./assets/js/performance.js');
+  log('performance OK: ' + (typeof SpaceVoyagePerf.warm));
+  log('fetching a model...');
+  const r = await fetch('./assets/models/comet.glb', {method:'HEAD'});
+  log('model fetch: ' + r.status);
+  log('ALL OK');
+} catch (e) {
+  log('FAIL: ' + (e && e.message ? e.message : String(e)));
+}
+</script>
