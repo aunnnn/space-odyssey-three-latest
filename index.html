@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#050710" />
+  <link rel="icon" href="data:," />
+  <title>Spaceship Flight</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preload" href="assets/images/backdrop.jpg" as="image" fetchpriority="high" />
+  <link rel="preload" href="assets/models/comet.glb" as="fetch" crossorigin />
+  <link rel="preload" href="assets/models/satellite.glb" as="fetch" crossorigin />
+  <link rel="preload" href="assets/models/doryphoros.glb" as="fetch" crossorigin />
+  <link rel="preload" href="assets/models/apollo.glb" as="fetch" crossorigin />
+  <link rel="preload" href="assets/models/moai.glb" as="fetch" crossorigin />
+</head>
+<body class="loading">
+  <div class="loading-screen" role="status" aria-live="polite">
+    <div class="loading-readout">
+      <div class="loading-label"><span>Preparing voyage</span><span class="loading-percent">0%</span></div>
+      <div class="loading-track" aria-hidden="true"><div class="loading-fill"></div></div>
+    </div>
+  </div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <main id="story" aria-label="A scroll-controlled voyage through space and a Greek colonnade">
+    <p class="sr-only">Scroll to guide the vessel through the voyage. Mission logs appear as the route advances.</p>
+    <section class="scene-copy center at-0" data-beat="0">
+      <div class="log-meta"><span class="chapter">Mission log 01</span><time class="mission-time">MET 000/00:00:00</time></div>
+      <h1>Departure</h1>
+      <p>Undocked on schedule. The seat still smells like the station's coffee.</p>
+    </section>
+    <section class="scene-copy left at-1" data-beat="1">
+      <div class="log-meta"><span class="chapter">Mission log 02</span><time class="mission-time">MET 000/04:18:22</time></div>
+      <h2>Ringed planet</h2>
+      <p>The rings fill the left window. I turned the cabin lights down to see them.</p>
+    </section>
+    <section class="scene-copy right at-2" data-beat="2">
+      <div class="log-meta"><span class="chapter">Mission log 03</span><time class="mission-time">MET 000/09:42:05</time></div>
+      <h2>Asteroid field</h2>
+      <p>A few rocks passed closer than planned. I kept my hand on manual control.</p>
+    </section>
+    <section class="scene-copy left at-3" data-beat="3">
+      <div class="log-meta"><span class="chapter">Mission log 04</span><time class="mission-time">MET 000/15:06:41</time></div>
+      <h2>Nebula</h2>
+      <p>Visibility dropped inside the cloud. The hull picked up a faint blue glow.</p>
+    </section>
+    <section class="scene-copy right at-4" data-beat="4">
+      <div class="log-meta"><span class="chapter">Mission log 05</span><time class="mission-time">MET 000/21:33:18</time></div>
+      <h2>Galaxy edge</h2>
+      <p>The core is below us now. I stopped trying to count the spiral arms.</p>
+    </section>
+    <section class="scene-copy left at-5" data-beat="5">
+      <div class="log-meta"><span class="chapter">Mission log 06</span><time class="mission-time">MET 001/03:11:52</time></div>
+      <h2>Comet 67P</h2>
+      <p>Matched speed with 67P. Dust tapped the forward shield for a while.</p>
+      <span class="source-note">Comet shape · shared scientific 3D archive</span>
+    </section>
+    <section class="scene-copy right at-6" data-beat="6">
+      <div class="log-meta"><span class="chapter">Mission log 07</span><time class="mission-time">MET 001/08:47:09</time></div>
+      <h2>Star approach</h2>
+      <p>Cabin temperature climbed two degrees. Cooling is steady.</p>
+    </section>
+    <section class="scene-copy left at-7" data-beat="7">
+      <div class="log-meta"><span class="chapter">Mission log 08</span><time class="mission-time">MET 001/12:26:44</time></div>
+      <h2>Closest pass</h2>
+      <p>Closest point passed. The sunshade still lights the whole cockpit.</p>
+    </section>
+    <section class="scene-copy right at-8" data-beat="8">
+      <div class="log-meta"><span class="chapter">Mission log 09</span><time class="mission-time">MET 001/18:05:13</time></div>
+      <h2>Derelict</h2>
+      <p>A dead satellite is tumbling off the route. Its solar wings still catch the star.</p>
+      <span class="source-note">Satellite model · public-domain 3D archive</span>
+    </section>
+    <section class="scene-copy left at-9" data-beat="9">
+      <div class="log-meta"><span class="chapter">Mission log 10</span><time class="mission-time">MET 002/00:17:36</time></div>
+      <h2>Pulsar</h2>
+      <p>The pulse hits the sensors on a perfect beat. I caught myself counting along.</p>
+    </section>
+    <section class="scene-copy right at-10" data-beat="10">
+      <div class="log-meta"><span class="chapter">Mission log 11</span><time class="mission-time">MET 002/05:49:02</time></div>
+      <h2>Dying star</h2>
+      <p>Dust bands are crossing the route. I reduced speed and let guidance work.</p>
+    </section>
+    <section class="scene-copy left at-11" data-beat="11">
+      <div class="log-meta"><span class="chapter">Mission log 12</span><time class="mission-time">MET 002/10:28:55</time></div>
+      <h2>Rogue planet</h2>
+      <p>No sunrise on this one. The dark side is only slightly colder than the other side.</p>
+    </section>
+    <section class="scene-copy center at-12" data-beat="12">
+      <div class="log-meta"><span class="chapter">Mission log 13</span><time class="mission-time">MET 002/16:02:17</time></div>
+      <h2>Dark nebula</h2>
+      <p>Outside went black. I am on instruments with one hand on the rail.</p>
+    </section>
+    <section class="scene-copy right at-13" data-beat="13">
+      <div class="log-meta"><span class="chapter">Mission log 14</span><time class="mission-time">MET 002/21:36:40</time></div>
+      <h2>Magnetar</h2>
+      <p>The compass is useless here. Backup navigation is holding.</p>
+    </section>
+    <section class="scene-copy left at-14" data-beat="14">
+      <div class="log-meta"><span class="chapter">Mission log 15</span><time class="mission-time">MET 003/03:20:11</time></div>
+      <h2>Quasar</h2>
+      <p>The jet is brighter than the rest of the sky. Cameras are stepping down exposure.</p>
+    </section>
+    <section class="scene-copy right at-15" data-beat="15">
+      <div class="log-meta"><span class="chapter">Mission log 16</span><time class="mission-time">MET 003/09:12:48</time></div>
+      <h2>Black hole</h2>
+      <p>The star field bends around the dark center. I checked our escape burn twice.</p>
+    </section>
+    <section class="scene-copy left at-16" data-beat="16">
+      <div class="log-meta"><span class="chapter">Mission log 17</span><time class="mission-time">MET 003/14:44:03</time></div>
+      <h2>Wormhole entry</h2>
+      <p>Every warning light came on, then cleared. My coffee stayed in the cup.</p>
+    </section>
+    <section class="scene-copy right at-17" data-beat="17">
+      <div class="log-meta"><span class="chapter">Mission log 18</span><time class="mission-time">MET 003/20:09:27</time></div>
+      <h2>White hole</h2>
+      <p>We are clear of the tunnel. Material is moving outward, so I am taking the wide route.</p>
+    </section>
+    <section class="scene-copy left at-18" data-beat="18">
+      <div class="log-meta"><span class="chapter">Mission log 19</span><time class="mission-time">MET 004/01:37:54</time></div>
+      <h2>Uncharted opening</h2>
+      <p>There is another sky through the opening. None of our charts match it.</p>
+    </section>
+    <section class="scene-copy right at-19" data-beat="19">
+      <div class="log-meta"><span class="chapter">Mission log 20</span><time class="mission-time">MET 004/07:15:32</time></div>
+      <h2>Stone platform</h2>
+      <p>A stone platform is hanging in open space. I made a second pass to be sure.</p>
+    </section>
+    <section class="scene-copy left at-20" data-beat="20">
+      <div class="log-meta"><span class="chapter">Mission log 21</span><time class="mission-time">MET 004/12:58:06</time></div>
+      <h2>Twin suns</h2>
+      <p>Two shadows cross the console. The cabin keeps changing from warm to cold.</p>
+    </section>
+    <section class="scene-copy right at-21" data-beat="21">
+      <div class="log-meta"><span class="chapter">Mission log 22</span><time class="mission-time">MET 004/18:31:49</time></div>
+      <h2>Star nursery</h2>
+      <p>New stars are buried in the cloud. The radio is mostly static here.</p>
+    </section>
+    <section class="scene-copy left at-22" data-beat="22">
+      <div class="log-meta"><span class="chapter">Mission log 23</span><time class="mission-time">MET 005/00:04:21</time></div>
+      <h2>First shape</h2>
+      <p>An angular frame is moving off the bow. Radar says there is nothing there.</p>
+    </section>
+    <section class="scene-copy right at-23" data-beat="23">
+      <div class="log-meta"><span class="chapter">Mission log 24</span><time class="mission-time">MET 005/05:46:58</time></div>
+      <h2>More shapes</h2>
+      <p>More have appeared in blue, green, and red. None of them give off heat.</p>
+    </section>
+    <section class="scene-copy center at-24" data-beat="24">
+      <div class="log-meta"><span class="chapter">Mission log 25</span><time class="mission-time">MET 005/11:22:14</time></div>
+      <h2>Artifact field</h2>
+      <p>They keep changing shape. I shut off the cabin lights to rule out reflections.</p>
+    </section>
+    <section class="scene-copy left at-25" data-beat="25">
+      <div class="log-meta"><span class="chapter">Mission log 26</span><time class="mission-time">MET 005/17:03:37</time></div>
+      <h2>Corridor in view</h2>
+      <p>A corridor appeared ahead. It is large enough for the ship, with little room to spare.</p>
+    </section>
+    <section class="scene-copy right at-26" data-beat="26">
+      <div class="log-meta"><span class="chapter">Mission log 27</span><time class="mission-time">MET 005/22:39:10</time></div>
+      <h2>Entry</h2>
+      <p>I lowered speed to five percent. The stone floor is close beneath us.</p>
+    </section>
+    <section class="scene-copy left at-27" data-beat="27">
+      <div class="log-meta"><span class="chapter">Mission log 28</span><time class="mission-time">MET 006/04:18:43</time></div>
+      <h2>Statues</h2>
+      <p>Figures line both sides. Every face points toward the center aisle.</p>
+    </section>
+    <section class="scene-copy right at-28" data-beat="28">
+      <div class="log-meta"><span class="chapter">Mission log 29</span><time class="mission-time">MET 006/09:52:16</time></div>
+      <h2>Red lamps</h2>
+      <p>A red lamp repeats every seventh bay. I started counting them out of habit.</p>
+    </section>
+    <section class="scene-copy left at-29" data-beat="29">
+      <div class="log-meta"><span class="chapter">Mission log 30</span><time class="mission-time">MET 006/15:24:08</time></div>
+      <h2>Narrow section</h2>
+      <p>The ceiling is lower here. I can feel a soft vibration through the seat.</p>
+    </section>
+    <section class="scene-copy right at-30" data-beat="30">
+      <div class="log-meta"><span class="chapter">Mission log 31</span><time class="mission-time">MET 006/20:57:31</time></div>
+      <h2>Rear camera</h2>
+      <p>The rear camera shows more columns. The entrance is gone.</p>
+    </section>
+    <section class="scene-copy left at-31" data-beat="31">
+      <div class="log-meta"><span class="chapter">Mission log 32</span><time class="mission-time">MET 007/02:31:05</time></div>
+      <h2>Last statues</h2>
+      <p>The last figures face the far door. One marble head rests against a pillar.</p>
+      <span class="source-note">Classical sculpture scan · shared 3D archive</span>
+    </section>
+    <section class="scene-copy right at-32" data-beat="32">
+      <div class="log-meta"><span class="chapter">Mission log 33</span><time class="mission-time">MET 007/08:08:42</time></div>
+      <h2>Red light</h2>
+      <p>There is one red light ahead. Navigation says the route continues through it.</p>
+    </section>
+    <section class="scene-copy left at-33" data-beat="33">
+      <div class="log-meta"><span class="chapter">Mission log 34</span><time class="mission-time">MET 007/13:46:19</time></div>
+      <h2>Terminal</h2>
+      <p>The console went quiet when that screen came on. I don't think the ship is choosing the route now.</p>
+      <span class="source-note">Monumental stone scan · shared 3D archive</span>
+    </section>
+    <section class="scene-copy center at-34" data-beat="34">
+      <div class="log-meta"><span class="chapter">Mission log 35</span><time class="mission-time">MET 007/19:20:54</time></div>
+      <h2>Crossing</h2>
+      <p>The corridor ends here. The opening beyond it is pulling us forward.</p>
+    </section>
+    <section class="scene-copy left at-35" data-beat="35">
+      <div class="log-meta"><span class="chapter">Mission log 36</span><time class="mission-time">MET 007/19:21:03</time></div>
+      <h2>Inside</h2>
+      <p>The stars are gone. The forward lamps reach only a few ship lengths.</p>
+    </section>
+    <section class="scene-copy right at-36" data-beat="36">
+      <div class="log-meta"><span class="chapter">Mission log 37</span><time class="mission-time">MET 007/19:21:47</time></div>
+      <h2>Root lines</h2>
+      <p>Thin lights are growing along the walls. Guidance has stopped naming directions.</p>
+    </section>
+    <section class="scene-copy left at-37" data-beat="37">
+      <div class="log-meta"><span class="chapter">Mission log 38</span><time class="mission-time">MET 007/19:22:31</time></div>
+      <h2>Fast field</h2>
+      <p>The shapes are passing three times faster than our instruments say we are moving.</p>
+    </section>
+    <section class="scene-copy center at-38" data-beat="38">
+      <div class="log-meta"><span class="chapter">Mission log 39</span><time class="mission-time">MET 007/19:23:16</time></div>
+      <h2>Familiar signal</h2>
+      <p>The beacon ahead has our departure code. I can see the station lights again.</p>
+    </section>
+    <section id="loop-return-log" class="scene-copy center loop-copy" aria-hidden="true">
+      <div class="log-meta"><span class="chapter">Mission log 40</span><time class="mission-time">MET 000/00:00:06</time></div>
+      <h2>Loss of time</h2>
+      <p>The station lights are ahead again. The mission clock reads zero. I must have blacked out for a second.</p>
+    </section>
+  </main>
+
+  <aside class="hud">
+    <div class="hud-top">
+      <div class="signal"><i class="signal-dot"></i><span>Vessel online</span></div>
+      <span class="coordinates">X +000.0 &nbsp; Y +000.0 &nbsp; Z −000.0</span>
+    </div>
+    <div class="route">
+      <span class="route-label">Deep space</span>
+      <div class="route-line"><div class="route-fill"></div></div>
+      <span class="route-mark">000%</span>
+    </div>
+    <div class="scroll-hint"><i class="wheel"></i><span>Scroll to navigate</span></div>
+  </aside>
+
+  <div class="fallback" role="status">
+    <div><h2>Your voyage is waiting.</h2><p>This 3D scene needs WebGL. Try opening it in a current browser with hardware acceleration enabled.</p></div>
+  </div>
+
+  
+  
+  
+  
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
