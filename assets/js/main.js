@@ -16,7 +16,9 @@ var THREE, GLTFLoader, SpaceVoyageAssets, SpaceVoyagePerf;
       var fallback = document.querySelector('.fallback');
 
       // Let the document become interactive before the heavier scene graph is assembled.
-      addEventListener('DOMContentLoaded',function(){setTimeout(function(){
+      // The dynamic imports above can resolve after DOMContentLoaded already fired, so
+      // start immediately in that case instead of waiting for an event that never comes.
+      function startVoyageSetup(){setTimeout(function(){
       var assetPaths = SpaceVoyageAssets;
       var loadingFill=document.querySelector('.loading-fill'),loadingPercent=document.querySelector('.loading-percent');
       var startupAssets={backdrop:false,comet:false,dory:false,apollo:false,computer:false,moai:false,satellite:false},startupBegan=false;
@@ -1345,6 +1347,7 @@ var THREE, GLTFLoader, SpaceVoyageAssets, SpaceVoyagePerf;
       // Load and assemble every external model before the first interactive frame.
       requestPlatformStatue();requestHallStatues();requestApolloRelic();
       if(Object.keys(startupAssets).every(function(key){return startupAssets[key];}))beginVoyage();
-      },60);},{once:true});
+      },60);}
+              if(document.readyState==='loading'){addEventListener('DOMContentLoaded',startVoyageSetup,{once:true});}else{startVoyageSetup();}
     })();
   
