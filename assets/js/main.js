@@ -208,7 +208,7 @@ var THREE, GLTFLoader, SpaceVoyageAssets, SpaceVoyagePerf;
 
       function rockTexture(){var c=document.createElement('canvas');c.width=c.height=mobile?128:256;var x=c.getContext('2d'),canvasScale=c.width/512;x.scale(canvasScale,canvasScale);x.fillStyle='#626a70';x.fillRect(0,0,512,512);for(var i=0;i<900;i++){var v=Math.floor(rand(25,155));x.fillStyle='rgba('+v+','+v+','+v+','+rand(.04,.24)+')';x.beginPath();x.arc(rand(0,512),rand(0,512),rand(.4,5),0,Math.PI*2);x.fill();}for(var j=0;j<80;j++){var cx=rand(0,512),cy=rand(0,512),r=rand(3,18),gr=x.createRadialGradient(cx-r*.25,cy-r*.25,1,cx,cy,r);gr.addColorStop(0,'#90989a');gr.addColorStop(.42,'#333a40');gr.addColorStop(1,'#697175');x.fillStyle=gr;x.beginPath();x.arc(cx,cy,r,0,Math.PI*2);x.fill();}return prepareTexture(new THREE.CanvasTexture(c),true);}
       var rockMap=rockTexture();rockMap.wrapS=rockMap.wrapT=THREE.RepeatWrapping;
-      var rockGeo = new THREE.IcosahedronGeometry(1,mobile?1:2); var rockMat = new THREE.MeshStandardMaterial({map:rockMap,bumpMap:rockMap,bumpScale:.16,color:0x74808a,roughness:.96,metalness:.03,flatShading:true});
+      var rockGeo = new THREE.IcosahedronGeometry(1,mobile?1:2); var rockMat = new THREE.MeshStandardMaterial({map:rockMap,bumpMap:rockMap,bumpScale:.16,color:0xffffff,roughness:.96,metalness:.03,flatShading:true});
       var asteroidGroup = new THREE.Group(); asteroidGroup.position.set(0,0,-240); scene.add(asteroidGroup);
       var asteroidCount=mobile?55:105,asteroidMesh=new THREE.InstancedMesh(rockGeo,rockMat,asteroidCount),asteroids=[],asteroidDummy=new THREE.Object3D(),lastAsteroidUpdate=-Infinity;
       asteroidMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);asteroidMesh.frustumCulled=false;asteroidGroup.add(asteroidMesh);
@@ -768,7 +768,7 @@ var THREE, GLTFLoader, SpaceVoyageAssets, SpaceVoyagePerf;
       hallContacts.count=hallColumnCount;
       hallCoffers.count=hallCrosses.count=hallBayCount;
       var hallStatueHolders=[],hallStatueLights=[];
-      function makeHallPedestal(x,z,turn){var holder=new THREE.Group();holder.position.set(x,0,z);holder.rotation.y=turn;hall.add(holder);var plinth=new THREE.Mesh(new THREE.BoxGeometry(6,2.4,6),doricStoneMat);plinth.position.y=1.2;plinth.receiveShadow=true;holder.add(plinth);var neck=new THREE.Mesh(new THREE.BoxGeometry(4.9,.6,4.9),doricStoneMat);neck.position.y=2.7;neck.receiveShadow=true;holder.add(neck);var statueKey=new THREE.PointLight(0xe5e8df, 113.8,48,2);statueKey.position.set(x>0?-7:7,13,8);holder.add(statueKey);var statueCoolRim=new THREE.PointLight(0x829ca8, 37.4,36,2);statueCoolRim.position.set(x>0?5:-5,9,-6);holder.add(statueCoolRim);holder.userData.pedestalTop=3;hallStatueHolders.push(holder);hallStatueLights.push({key:statueKey,rim:statueCoolRim,z:z});}
+      function makeHallPedestal(x,z,turn){var holder=new THREE.Group();holder.position.set(x,0,z);holder.rotation.y=turn;hall.add(holder);var plinth=new THREE.Mesh(new THREE.BoxGeometry(6,2.4,6),doricStoneMat);plinth.position.y=1.2;plinth.receiveShadow=true;holder.add(plinth);var neck=new THREE.Mesh(new THREE.BoxGeometry(4.9,.6,4.9),doricStoneMat);neck.position.y=2.7;neck.receiveShadow=true;holder.add(neck);var statueKey=new THREE.PointLight(0xe5e8df, 113.8,48,2);statueKey.position.set(x>0?-7:7,13,8);statueKey.userData.baseIntensity=113.8;holder.add(statueKey);var statueCoolRim=new THREE.PointLight(0x829ca8, 37.4,36,2);statueCoolRim.position.set(x>0?5:-5,9,-6);statueCoolRim.userData.baseIntensity=37.4;holder.add(statueCoolRim);holder.userData.pedestalTop=3;hallStatueHolders.push(holder);hallStatueLights.push({key:statueKey,rim:statueCoolRim,z:z});}
       [6,15,25,35].forEach(function(bi,i){var side=i%2?1:-1;makeHallPedestal(side*17,hallStart-16-bi*hallBayStep,side>0?-.62:.62);});
       var hallStatueModels=[],hallStatuesRequested=false;
       function requestHallStatues(){
@@ -1100,7 +1100,7 @@ var THREE, GLTFLoader, SpaceVoyageAssets, SpaceVoyagePerf;
         hallStatueModels.forEach(function(item){item.root.visible=hall.visible;});
         // Only nearby statue lights participate in shading. The full-detail sculptures stay resident
         // and visible, but eight distant point lights no longer burden every hallway fragment.
-        hallStatueLights.forEach(function(item){var nearby=hall.visible&&Math.abs(cameraZ-item.z)<190;item.key.visible=nearby;item.rim.visible=nearby;});
+        hallStatueLights.forEach(function(item){var nearby=hall.visible&&Math.abs(cameraZ-item.z)<190;item.key.intensity=nearby?item.key.userData.baseIntensity:0;item.rim.intensity=nearby?item.rim.userData.baseIntensity:0;});
         apolloRelic.visible=hall.visible&&Math.abs(cameraZ-apolloRelic.position.z)<900;
       }
 
